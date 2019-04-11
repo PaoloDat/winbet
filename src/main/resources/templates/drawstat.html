@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Draw Stat</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+    <table class="table">
+        <colgroup>
+            <col class="column-grey"/>
+            <col span="3" class="column-blue"/>
+            <col span="3" class="column-grey"/>
+            <col span="3" class="column-blue"/>
+        </colgroup>
+        <tr>
+            <td rowspan="1"></td>
+            <th colspan="3">WDL</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+
+        </tr>
+        <tr>
+            <th>Тираж</th>
+            <th>Home</th>
+            <th>Draw</th>
+            <th>Away</th>
+            <th>Pull</th>
+            <th>Middle</th>
+            <th>UnPull</th>
+            <th>Pull</th>
+            <th>Middle</th>
+            <th>UnPull</th>
+        </tr>
+        <tbody>
+            <tr th:each="stat : ${statistic}">
+                <td th:text="${stat.getDrawNumber()}"></td>
+                <td th:text="${stat.getHomeWinNumber()}"></td>
+                <td th:text="${stat.getDrawGameNumber()}"></td>
+                <td th:text="${stat.getAwayWinNumber()}"></td>
+                <td th:text="${stat.getFonPullNumber()}"></td>
+                <td th:text="${stat.getFonMiddleNumber()}"></td>
+                <td th:text="${stat.getFonUnPullNumber()}"></td>
+                <td th:text="${stat.getManPullNumber()}"></td>
+                <td th:text="${stat.getManMiddleNumber()}"></td>
+                <td th:text="${stat.getManUnPullNumber()}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

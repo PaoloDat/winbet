@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Row Stat</title>
+</head>
+<body>
+    <p>Добавить статистику матча</p>
+    <form action="#" th:action="@{/rowstatsave}" th:object="${data}" method="post">
+    <p><input type="text" th:field="*{drawId}">  ID</p>
+    <p>
+        <input type="text" th:field="*{homeTeamAllWin}">
+        <input type="text" th:field="*{homeTeamAllDraw}">
+        <input type="text" th:field="*{homeTeamAllLose}">   Home Team All Games
+    </p>
+    <p>
+        <input type="text" th:field="*{homeTeamHomeWin}">
+        <input type="text" th:field="*{homeTeamHomeDraw}">
+        <input type="text" th:field="*{homeTeamHomeLose}">   Home Team Home Games
+    </p>
+    <p>
+        <input type="text" th:field="*{homeTeamAwayWin}">
+        <input type="text" th:field="*{homeTeamAwayDraw}">
+        <input type="text" th:field="*{homeTeamAwayLose}">   Home Team Away Games
+    </p>
+    <p>
+        <input type="text" th:field="*{homeTeamAllRowWin}">
+        <input type="text" th:field="*{homeTeamAllRowDraw}">
+        <input type="text" th:field="*{homeTeamAllRowLose}">   Home Team All Row Games
+    </p>
+    <p>
+        <input type="text" th:field="*{homeTeamHomeRowWin}">
+        <input type="text" th:field="*{homeTeamHomeRowDraw}">
+        <input type="text" th:field="*{homeTeamHomeRowLose}">   Home Team Home Row Games
+    </p>
+    <p>
+        <input type="text" th:field="*{homeTeamAwayRowWin}">
+        <input type="text" th:field="*{homeTeamAwayRowDraw}">
+        <input type="text" th:field="*{homeTeamAwayRowLose}">   Home Team Away Row Games
+    </p>
+    <br/> <br/>
+
+
+    <p>
+        <input type="text" th:field="*{awayTeamAllWin}">
+        <input type="text" th:field="*{awayTeamAllDraw}">
+        <input type="text" th:field="*{awayTeamAllLose}">   Guest Team All Games
+    </p>
+    <p>
+        <input type="text" th:field="*{awayTeamHomeWin}">
+        <input type="text" th:field="*{awayTeamHomeDraw}">
+        <input type="text" th:field="*{awayTeamHomeLose}">   Guest Team Home Games
+    </p>
+    <p>
+        <input type="text" th:field="*{awayTeamAwayWin}">
+        <input type="text" th:field="*{awayTeamAwayDraw}">
+        <input type="text" th:field="*{awayTeamAwayLose}">   Guest Team Away Games
+    </p>
+    <p>
+        <input type="text" th:field="*{awayTeamAllRowWin}">
+        <input type="text" th:field="*{awayTeamAllRowDraw}">
+        <input type="text" th:field="*{awayTeamAllRowLose}">   Guest Team All Row Games
+    </p>
+    <p>
+        <input type="text" th:field="*{awayTeamHomeRowWin}">
+        <input type="text" th:field="*{awayTeamHomeRowDraw}">
+        <input type="text" th:field="*{awayTeamHomeRowLose}">   Guest Team Home Row Games
+    </p>
+    <p>
+        <input type="text" th:field="*{awayTeamAwayRowWin}">
+        <input type="text" th:field="*{awayTeamAwayRowDraw}">
+        <input type="text" th:field="*{awayTeamAwayRowLose}">   Guest Team Away Row Games
+    </p>
+
+
+    <br/> <br/>
+
+
+    <p>
+        <input type="text" th:field="*{hhWin}">
+        <input type="text" th:field="*{hhDraw}">
+        <input type="text" th:field="*{hhLose}">   H2H All Games
+    </p>
+
+    <p>
+        <input type="text" th:field="*{hhRowWin}">
+        <input type="text" th:field="*{hhRowDraw}">
+        <input type="text" th:field="*{hhRowLose}">   H2H ROW Games
+    </p>
+
+
+
+
+        <input type="submit" value="save stat">
+    </form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Stat</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script th:src="@{/js/data.js}"></script>
+</head>
+<body>
+    <table class="table table-width">
+        <caption>Статистика турнира</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+       <tr>
+           <th>Тираж</th>
+           <th>Турнир</th>
+           <th>Хозяева</th>
+           <th>Гости</th>
+           <th colspan="2">Счет</th>
+           <th colspan="3">FON</th>
+           <th colspan="3">MAN</th>
+           <th>W-D-L</th>
+           <th>Fon</th>
+           <th>Man</th>
+       </tr>
+       <tbody>
+            <tr th:each="stat : ${tournamentStatistic}" class="CompStat" th:id="${stat.getId()}">
+                <td th:text="${stat.getDrawNumber()}"></td>
+                <td th:text="${stat.getTournamentName()}"></td>
+                <td th:text="${stat.getHomeTeamName()}"></td>
+                <td th:text="${stat.getAwayTeamName()}"></td>
+                <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+                <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+                <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+                <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+                <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+                <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+                <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+                <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+                <td th:id="${stat.getId()}+wdlCompStat" >0-0-0</td>
+                <td th:id="${stat.getId()}+fonCompStat" >0-0-0</td>
+                <td th:id="${stat.getId()}+manCompStat" >0-0-0</td>
+            </tr>
+       </tbody>
+    </table>
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>Статистика домашней команды</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${homeTeamStat}" class="HomeTeamStat" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlHomeTeamStat" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonHomeTeamStat" >0-0-0</td>
+            <td th:id="${stat.getId()}+manHomeTeamStat" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>Статистика гостевой команды</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${awayTeamStat}" class="AwayTeamStat" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlAwayTeamStat" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonAwayTeamStat" >0-0-0</td>
+            <td th:id="${stat.getId()}+manAwayTeamStat" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>Статистика личных встреч</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${h2hStatistic}" class="H2HStat" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlH2HStat" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonH2HStat" >0-0-0</td>
+            <td th:id="${stat.getId()}+manH2HStat" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>FON точное совпадение</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${fonValuesExactMatch}" class="FonExactMatch" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlFonExactMatch" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonFonExactMatch" >0-0-0</td>
+            <td th:id="${stat.getId()}+manFonExactMatch" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>FON точное совпадение для турнира</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${fonValuesExactMatchForTournament}" class="FonExactMatchComp" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlFonExactMatchComp" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonFonExactMatchComp" >0-0-0</td>
+            <td th:id="${stat.getId()}+manFonExactMatchComp" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>Man точное совпадение</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${manValuesExactMatch}" class="ManExactValue" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlManExactValue" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonManExactValue" >0-0-0</td>
+            <td th:id="${stat.getId()}+manManExactValue" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>Man точное совпадение для турнира</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${manValuesExactMatchForTournament}" class="ManExactValueForComp" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlManExactValueForComp" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonManExactValueForComp" >0-0-0</td>
+            <td th:id="${stat.getId()}+manManExactValueForComp" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br/><br/><br/>
+
+    <table class="table table-width">
+        <caption>Несовпадение пулов для турнира</caption>
+        <colgroup>
+            <col span="2" class="column-grey">
+            <col span="2" class="column-blue">
+            <col span="2" class="column-grey">
+            <col span="3" class="column-blue">
+            <col span="3" class="column-grey">
+        </colgroup>
+        <tr>
+            <th>Тираж</th>
+            <th>Турнир</th>
+            <th>Хозяева</th>
+            <th>Гости</th>
+            <th colspan="2">Счет</th>
+            <th colspan="3">FON</th>
+            <th colspan="3">MAN</th>
+            <th>W-D-L</th>
+            <th>Fon</th>
+            <th>Man</th>
+        </tr>
+        <tbody>
+        <tr th:each="stat : ${withFonAndManAndCompName}" class="PullCompMismatch" th:id="${stat.getId()}">
+            <td th:text="${stat.getDrawNumber()}"></td>
+            <td th:text="${stat.getTournamentName()}"></td>
+            <td th:text="${stat.getHomeTeamName()}"></td>
+            <td th:text="${stat.getAwayTeamName()}"></td>
+            <td th:id="${stat.getId()}+HG" th:text="${stat.getHomeScore()}"></td>
+            <td th:id="${stat.getId()}+AG" th:text="${stat.getAwayScore()}"></td>
+            <td th:id="${stat.getId()}+FH" th:text="${stat.getFonHome()}"></td>
+            <td th:id="${stat.getId()}+FD" th:text="${stat.getFonDraw()}"></td>
+            <td th:id="${stat.getId()}+FA" th:text="${stat.getFonAway()}"></td>
+            <td th:id="${stat.getId()}+MH" th:text="${stat.getManHome()}"></td>
+            <td th:id="${stat.getId()}+MD" th:text="${stat.getManDraw()}"></td>
+            <td th:id="${stat.getId()}+MA" th:text="${stat.getManAway()}"></td>
+            <td th:id="${stat.getId()}+wdlPullCompMismatch" >0-0-0</td>
+            <td th:id="${stat.getId()}+fonPullCompMismatch" >0-0-0</td>
+            <td th:id="${stat.getId()}+manPullCompMismatch" >0-0-0</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    background: burlywood;
+}
+
+.table {
+    color: black;
+    text-align: center;
+    width: 50%;
+    background: white;
+}
+
+.table-width {
+    width: 80%;
+}
+
+.column-grey {
+    background: beige;
+}
+
+.column-blue {
+    background: peachpuff;
+}
