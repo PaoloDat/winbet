@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 /**
  * StatisticValues.
@@ -20,6 +21,17 @@ public class Statistic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long leagueId;
+    private Integer drawNumber;
+
+    private LocalDate date;
+    private String tournamentName;
+
+    private String homeTeamName;
+    private String awayTeamName;
+
+    private int homeScore;
+    private int awayScore;
 
     private Integer homeTeamAllWin;
     private Integer homeTeamAllDraw;
@@ -76,4 +88,8 @@ public class Statistic {
     private Integer hhRowWin;
     private Integer hhRowDraw;
     private Integer hhRowLose;
+
+    private Double homeWinOdd;
+    private Double drawOdd;
+    private Double awayWinOdd;
 }

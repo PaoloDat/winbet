@@ -6,10 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Game.
@@ -25,7 +23,7 @@ public class Game {
     private Long id;
 
     private int drawNumber;
-    private Date date;
+    private LocalDate date;
     private int tournamentType;
     private String tournamentName;
     private String homeTeamName;
@@ -38,8 +36,4 @@ public class Game {
     private double manHome;
     private double manDraw;
     private double manAway;
-
-    @OneToOne
-    @JoinColumn(name = "stat_id")
-    private Statistic statistic;
 }

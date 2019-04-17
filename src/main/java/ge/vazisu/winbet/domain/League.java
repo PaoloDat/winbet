@@ -2,13 +2,13 @@ package ge.vazisu.winbet.domain;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * League.
@@ -23,26 +23,25 @@ public class League {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String leagueName;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "dd/mm/yyyy")
     private LocalDate date;
     private String homeTeamName;
     private String awayTeamName;
-    private int homeScore;
-    private int awayScore;
-    private int halfHomeScore;
-    private int halfAwayScore;
+    private Integer homeScore;
+    private Integer awayScore;
+    private Integer halfHomeScore;
+    private Integer halfAwayScore;
     private String referee;
-    private int homeTeamShotOnTarget;
-    private int awayTeamShotOnTarget;
-    private int homeTeamCorner;
-    private int awayTeamCorner;
-    private int homeTeamOffside;
-    private int awayTeamOffside;
-    private int homeTeamYellowCard;
-    private int awayTeamYellowCard;
-    private int homeTeamRedCard;
-    private int awayTeamRedCard;
-    private double homeWinOdd;
-    private double drawOdd;
-    private double awayWinOdd;
+    private Integer homeTeamShotOnTarget;
+    private Integer awayTeamShotOnTarget;
+    private Integer homeTeamCorner;
+    private Integer awayTeamCorner;
+    private Integer homeTeamOffside;
+    private Integer awayTeamOffside;
+    private Integer homeTeamYellowCard;
+    private Integer awayTeamYellowCard;
+    private Integer homeTeamRedCard;
+    private Integer awayTeamRedCard;
+    private Double homeWinOdd;
+    private Double drawOdd;
+    private Double awayWinOdd;
 }

@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class DrawStatisticService {
-    private StatisticService statisticService;
+    private HelpService helpService;
     private GameRepository repository;
 
     public DrawStatistic getDrawStatistic(List<Game> list) {
@@ -26,7 +26,7 @@ public class DrawStatisticService {
         drawStatistic.setDrawNumber(list.get(0).getDrawNumber());
 
         list.forEach(game -> {
-            StatisticValues statistic = statisticService.getStatistic(game);
+            StatisticValues statistic = helpService.getStatistic(game);
             if (statistic.isHomeWin()) {
                 drawStatistic.setHomeWinNumber(drawStatistic.getHomeWinNumber() + 1);
             }
